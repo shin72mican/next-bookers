@@ -1,0 +1,11 @@
+# DB接続
+psql -U root -d postgres
+
+# DB作成
+create database bookers;
+
+# commond
+\q # db切断
+\l # db一覧
+\d # table一覧
+\c db名 # db接続

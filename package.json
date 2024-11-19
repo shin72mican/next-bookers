@@ -1,0 +1,11 @@
+{
+  "name": "bookers",
+  "private": true,
+  "engines": {
+    "node": ">=22.3.0"
+  },
+  "workspaces": [
+    "packages/front-app",
+    "packages/api-app"
+  ]
+}
