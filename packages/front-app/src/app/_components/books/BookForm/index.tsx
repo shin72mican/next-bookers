@@ -16,7 +16,6 @@ export const BookForm = () => {
       <h1>新規登録</h1>
 
       <form>
-
         <div>
           <label htmlFor="title">Title</label>
         </div>
@@ -25,6 +24,7 @@ export const BookForm = () => {
           <input 
             type="text" 
             onChange={(e) => { setTitleVal(e.target.value)}} 
+            id="title"
           /> = { titleVal }
         </div>
 
@@ -36,13 +36,13 @@ export const BookForm = () => {
           <input 
             type="text" 
             onChange={(e) => { setOpinionVal(e.target.value)}} 
+            id="opinion"
           /> = { opinionVal }
         </div>
 
         <div>
           <button onClick={createBook}>Create Book</button>
         </div>
-
       </form>
 
     </div>

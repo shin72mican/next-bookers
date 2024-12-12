@@ -9,3 +9,6 @@ create database bookers;
 \l # db一覧
 \d # table一覧
 \c db名 # db接続
+
+# select 
+select * from "Book";

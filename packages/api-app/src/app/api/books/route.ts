@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server"
 
+// 本一覧データ取得
 export const GET = async() => {
   const books = await prisma.book.findMany();
   return Response.json({
@@ -10,6 +11,7 @@ export const GET = async() => {
   });
 }
 
+// 
 export const POST = async(req: NextRequest) => {
   const { title, body } = await req.json();
   try {
