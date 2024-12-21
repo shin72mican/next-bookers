@@ -1,5 +1,10 @@
-$text-color: black;
+$background-color: #dcdcdc;
+$text-color: #000000;
 $text-hover-color: #0000ee;
+
+.body {
+  background-color: $background-color;
+}
 
 .text {
   color: $text-color;

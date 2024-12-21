@@ -1,25 +1,40 @@
 $text-color: black;
 $text-hover-color: #0000ee;
 
+.main {
+  margin: 20px 100px;
+}
+
 .cards {
+  padding-left: 0px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 50px;
+  justify-content: center;
 }
 
 .card {
   display: grid;
-  grid-template-rows: max-content 150px 1fr;
-  height: 280px;
+  // grid-template-rows: max-content 150px 1fr;
+  height: 100%;
+  background-color: white;
+  overflow:hidden; // はみ出た部分を非表示
   img {
     object-fit: cover;
     width: 100%;
-    height: 100%;
+    height: 150px;
+    &:hover {
+      transform: scale(1.2, 1.2);
+    }
   }
   footer {
     align-self: end;
     justify-self: end;
   }
+}
+
+.cardFigure {
+  margin: 0px;
 }
 
 .link {

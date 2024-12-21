@@ -19,32 +19,36 @@ export const BookList = async() => {
 
   return (
     <>
-      <h1>投稿一覧</h1>
-
-      <div className={styles.cards}>
-        {data.books.length > 0 && 
-          data.books.map((book:Book) => (
-            <article className={styles.card}>
-              <header>
-                <h2>{book.title}</h2>
-              </header>
-              <Image
-                src={noImagePath}
-                alt="Picture of the book"
-                width={500}
-                height={500}
-              />
-              <div className="content">
-                <p>{book.body}</p>
-              </div>
-              <footer>
-                <Link href={"/books/" + book.id} className={styles.link}>show</Link>
-                <Link href={"/books/" + book.id + "/edit"} className={styles.link}>edit</Link>
-                <BookDeleteBtn bookId={book.id} />
-              </footer>
-            </article>
-          ))
-        }
+      <div className={styles.main}>
+        <div className={styles.content}>
+          <ul className={styles.cards}>
+          {data.books.length > 0 && 
+            data.books.map((book:Book) => (
+              <li className={styles.card} key={book.id}>
+                <figure className={styles.cardFigure}>
+                  <div>
+                    <Image
+                      src={noImagePath}
+                      alt="Picture of the book"
+                      width={500}
+                      height={500}
+                    />
+                  </div>
+                  <figcaption className="">
+                    <h3>{book.title}</h3>
+                  </figcaption>
+                  <p>{book.body}</p>
+                  <footer>
+                    <Link href={"/books/" + book.id} className={styles.link}>show</Link>
+                    <Link href={"/books/" + book.id + "/edit"} className={styles.link}>edit</Link>
+                    <BookDeleteBtn bookId={book.id} />
+                  </footer>
+                </figure>
+              </li>
+            ))
+          }
+          </ul>
+        </div>
       </div>
     </>
   )
