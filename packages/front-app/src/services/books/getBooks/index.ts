@@ -1,4 +1,4 @@
-import { booksHandleFailed, booksHandleSucceed, path } from "../";
+import { handleFailed, booksHandleSucceed, path } from "../";
 import type { Book } from "../../type";
 
 export type GetBooksResponse = {
@@ -8,5 +8,5 @@ export type GetBooksResponse = {
 export const getBooks = async(): Promise<Book[]> => {
   return fetch(path(`/api/books`), {cache: "no-store"})
          .then(booksHandleSucceed)
-         .catch(booksHandleFailed);
+         .catch(handleFailed);
 }

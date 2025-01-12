@@ -12,7 +12,7 @@ type Book = {
 
 export const BookList = async() => {
   // 本一覧情報の取得
-  const data:Book[] = await getBooks();
+  const books:Book[] = await getBooks();
 
   //
   const noImagePath = "/images/no-image1.png";
@@ -22,8 +22,8 @@ export const BookList = async() => {
       <div className={styles.main}>
         <div className={styles.content}>
           <ul className={styles.cards}>
-          {data.books.length > 0 && 
-            data.books.map((book:Book) => (
+          {books.length > 0 && 
+            books.map((book:Book) => (
               <li className={styles.card} key={book.id}>
                 <figure className={styles.cardFigure}>
                   <div>

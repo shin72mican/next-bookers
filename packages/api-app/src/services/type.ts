@@ -4,11 +4,13 @@ export type User = {
   email: string;
   password: string;
   createAt: string;
+  books: Book[];
 }
 
 export type Book = {
   id: string;
+  userId: string;
+  createAt: Date;
   title: string;
   body: string;
-  createAt: string;
-};
+}

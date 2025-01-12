@@ -1,10 +1,11 @@
 import { BookEditForm } from "@/app/_components/books/BookEditForm";
 
 type Props = {
-  params: { bookId: string }
+  params: Promise<{ bookId: string }>
 }
 
-const Page = ({ params }: Props) => {
+const Page = async (props: Props) => {
+  const params = await props.params;
   return (
     <>
       {/** 本編集フォーム */}

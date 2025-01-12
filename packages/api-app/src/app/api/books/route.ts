@@ -1,29 +1,32 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server"
+import type { Book } from "@/services/type";
 
 // 本一覧データ取得
 export const GET = async() => {
-  const books = await prisma.book.findMany();
+  const books:Book[] = await prisma.book.findMany();
   return Response.json({
-    books: books.map(({...books}) => ({
-      ...books
-    })),
+    books: books,
   });
 }
 
-// 
+// 投稿データの保存
 export const POST = async(req: NextRequest) => {
-  const { title, body } = await req.json();
+  const reqData: Omit<Book, 'id'|'createAt'> = await req.json();
+  const books:Book[] = await prisma.book.findMany();
   try {
     console.log("save-start");
     await prisma.book.create({
       data: {
-        title: title,
-        body: body,
-      },
+        userId: reqData.userId,
+        title: reqData.title,
+        body: reqData.body,
+      } 
     });
-    console.log("save-success");
-    return Response.json({ status: 201 });
+    console.log("save-end");
+    return Response.json({
+      books: books ?? null,
+    });
   } catch (err) {
     console.log("save-failed");
     return Response.json({ message: "Internal Server Error" }, { status: 500 });
