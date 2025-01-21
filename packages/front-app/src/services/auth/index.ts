@@ -1,5 +1,3 @@
-'use server'; // ←フロント側でbcrypt使うのに必要
-
 import bcrypt from 'bcrypt';
 import type { User } from "../type";
 
@@ -10,11 +8,9 @@ export const path = (path?: string) => `${host}${path}`;
 const saltRounds = 10;  // ソルトのラウンド数を指定
 
 class FetchError extends Error {
-  message: string;
   status: number;
   constructor(message: string, status: number) {
-    super();
-    this.message = message;
+    super(message);
     this.status = status;
   }
 };
@@ -39,13 +35,8 @@ export const handleFailed = async (err: unknown) => {
 
 // パスワードのハッシュ化
 export const hashPassword = async (password: string): Promise<string> => {
+  'use server'; // ←フロント側でbcrypt使うのに必要
   const salt = await bcrypt.genSalt(saltRounds);
   const hash = bcrypt.hash(password, salt);
   return hash;
 };
-
-// パスワードの比較
-// export const checkPassword = async (password: string, hash: string) => {
-//   const match = await bcrypt.compare(password, hash);
-//   return match;
-// };

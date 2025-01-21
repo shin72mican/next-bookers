@@ -1,7 +1,38 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server"
+import { checkPassword } from "@/services/auth";
 
+// 新規登録
 export const POST = async(req: NextRequest) => {
-  const { name, email, password } = await req.json();
-  
+  const { email } = await req.json();
+  const user = await prisma.user.findFirst({
+    where: {
+      email: email,
+    }
+  });
+  return Response.json({
+    user: user,
+  });
+}
+
+// ログイン
+export const GET = async(req: NextRequest) => {
+  const { email, password } = await req.json();
+  const user = await prisma.user.findFirst({
+    where: {
+      email: email,
+    }
+  });
+
+  // パスワードの比較
+  if (await checkPassword(password, user.password)) {
+    return Response.json({
+      user: user,
+    });
+  }
+
+  // パスワード不一致の時、null返す
+  return Response.json({
+    user: null,
+  })
 }

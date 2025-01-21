@@ -1,6 +1,8 @@
-export { default } from 'next-auth/middleware'
+import { getCsrfToken } from "next-auth/react"
 
 export const config = {
-  matcher: ['/books(.*)'],
+  matcher: ['/((?!auth|api).*)'],
   // matcher: ['/users'],
 }
+
+export { default } from 'next-auth/middleware'
