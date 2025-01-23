@@ -2,8 +2,7 @@
 import { useFormState } from 'react-dom';
 import { SigninFormSchema } from "@/app/lib/definitions";
 import type { SignInFormState } from "@/app/lib/type";
-import { signIn, useSession  } from "next-auth/react"
-import { redirect } from 'next/navigation'
+import { signIn } from "next-auth/react"
 
 const login = async(state: SignInFormState, formData: FormData): Promise<SignInFormState | undefined> => {
   const name: (string) = formData.get('name')?.toString() || '';

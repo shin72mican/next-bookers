@@ -41,3 +41,21 @@ export const storeUser = async(name:(string), email:string, password:string): Pr
   .then(userHandleSucceed)
   .catch(handleFailed);
 }
+
+// セッションユーザーデータ取得
+export const getSessionUser = async(email:string): Promise<User|null> => {
+  const user: Omit<User, 'id'|'name'|'password'|'createAt'> = {
+    email: email,
+  };
+
+  return fetch(path('/api/auth/getSessionUser'), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  })
+  .then(userHandleSucceed)
+  .catch(handleFailed);
+
+}

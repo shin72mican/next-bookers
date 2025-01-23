@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { NextRequest } from "next/server"
+import { NextRequest } from "next/server";
 import { checkPassword } from "@/services/auth";
 
 // 新規登録
@@ -25,10 +25,12 @@ export const GET = async(req: NextRequest) => {
   });
 
   // パスワードの比較
-  if (await checkPassword(password, user.password)) {
-    return Response.json({
-      user: user,
-    });
+  if(user) {
+    if (await checkPassword(password, user.password)) {
+      return Response.json({
+        user: user,
+      });
+    }
   }
 
   // パスワード不一致の時、null返す
