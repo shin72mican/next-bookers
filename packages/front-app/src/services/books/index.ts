@@ -1,3 +1,5 @@
+import type { Book } from "../type";
+
 export const host = process.env.NEXT_PUBLIC_API_HOST;
 
 export const path = (path?: string) => `${host}${path}`;
@@ -14,9 +16,7 @@ class FetchError extends Error {
 export const booksHandleSucceed = async (res: Response) => {
   const data = await res.json();
   // 配列に変換して返却
-  const books = {
-    books: Object.values(data.books)
-  }
+  const books = data.books
   if (!res.ok) {
     throw new FetchError(res.statusText, res.status);
   }
@@ -28,9 +28,7 @@ export const booksHandleSucceed = async (res: Response) => {
 export const bookHandleSucceed = async(res: Response) => {
   const data = await res.json();
   // 配列に変換して返却
-  const book = {
-    book: data.book,
-  }
+  const book:Book = data.book;
   if (!res.ok) {
     throw new FetchError(res.statusText, res.status);
   }

@@ -10,17 +10,33 @@ class FetchError extends Error {
   }
 };
 
-export const handleSucceed = async (res: Response) => {
+// /** book一覧 */
+// export const booksHandleSucceed = async (res: Response) => {
+//   const data = await res.json();
+//   // 配列に変換して返却
+//   const books = {
+//     books: Object.values(data.books)
+//   }
+//   if (!res.ok) {
+//     throw new FetchError(res.statusText, res.status);
+//   }
+//   return books;
+// };
+// /** end */
+
+/** user 詳細 */
+export const userHandleSucceed = async(res: Response) => {
   const data = await res.json();
   // 配列に変換して返却
-  const books = {
-    books: Object.values(data.books)
+  const book = {
+    book: data.book,
   }
   if (!res.ok) {
     throw new FetchError(res.statusText, res.status);
   }
-  return books;
-};
+  return book;
+}
+/** end */
 
 export const handleFailed = async (err: unknown) => {
   if (err instanceof FetchError) {

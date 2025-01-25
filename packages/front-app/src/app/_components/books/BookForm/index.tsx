@@ -25,7 +25,7 @@ export const BookForm = () => {
             type="text" 
             onChange={(e) => { setTitleVal(e.target.value)}} 
             id="title"
-          /> = { titleVal }
+          />
         </div>
 
         <div>
@@ -37,7 +37,7 @@ export const BookForm = () => {
             type="text" 
             onChange={(e) => { setOpinionVal(e.target.value)}} 
             id="opinion"
-          /> = { opinionVal }
+          />
         </div>
 
         <div>
