@@ -43,13 +43,13 @@ export const DELETE = async(
   req: NextRequest,
   { params }: Props
 ) => {
-  console.log(params);
   try {
     await prisma.book.delete({
       where: {
         id: params.bookId,
       },
-    })
+    });
+    
   } catch (err) {
     console.log('delete failed');
     console.log(err);

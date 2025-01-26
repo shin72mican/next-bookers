@@ -5,18 +5,23 @@ import { useRouter } from 'next/navigation'
 
 type Book = {
   bookId: string,
+  userId: string|undefined,
 }
 
 export const BookEditForm = (props: Book) => {
   const router = useRouter()
 
-  let [titleVal, setTitleVal] = useState<string>("");
-  let [opinionVal, setOpinionVal] = useState<string>("");
+  const [titleVal, setTitleVal] = useState<string>("");
+  const [opinionVal, setOpinionVal] = useState<string>("");
 
   const editBook = (event: React.FormEvent) => {
     event.preventDefault();
-    updateBook(props.bookId, titleVal, opinionVal);
+    if(!props.userId) {
+      return;
+    }
+    updateBook(props.userId, props.bookId, titleVal, opinionVal);
     router.push('/books');
+    router.refresh();
   }
 
   return (

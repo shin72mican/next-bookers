@@ -1,10 +1,14 @@
 import { path } from "../";
 import type { Book } from "../../type";
 
-export const storeBook = async(title:string, body:string) => {
+export const storeBook = async(id:(string|null), title:string, body:string) => {
+  if(!id) {
+    return
+  }
   const book: Omit<Book, 'id' | 'createAt'> = {
     title: title,
     body: body,
+    userId: id,
   };
 
   fetch(path(`/api/books`), {

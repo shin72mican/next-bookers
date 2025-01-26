@@ -12,6 +12,7 @@ export const BookDeleteBtn = (props:Props) => {
   const clickDeleteBook = (bookId:string) => {
     deleteBook(bookId);
     router.push('/books');
+    router.refresh();
   }
 
   return (
