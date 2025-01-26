@@ -5,7 +5,6 @@ import type { SignInFormState } from "@/app/lib/type";
 import { signIn } from "next-auth/react"
 
 const login = async(state: SignInFormState, formData: FormData): Promise<SignInFormState | undefined> => {
-  const name: (string) = formData.get('name')?.toString() || '';
   const email: (string) = formData.get('email')?.toString() || '';
   const password: (string) = formData.get('password')?.toString() || '';
 
