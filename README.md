@@ -7,10 +7,10 @@
 - next 14.2.13
 
 # 本投稿
-![book-post-video](/video/book_post.mp4)
+/video/book_post.mp4
 
 # ログイン
-![login-video](/video/login.mp4)
+/video/login.mp4
 
 # 新規登録
-![signin-video](/video/signin.mp4)
+/video/signin.mp4
