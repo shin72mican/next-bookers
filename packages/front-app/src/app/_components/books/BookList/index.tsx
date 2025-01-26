@@ -3,8 +3,6 @@ import { getBooks } from "@/services/books/getBooks";
 import { BookDeleteBtn } from "@/app/_components/books/BookDeleteBtn";
 import styles from './BookList.module.scss';
 import Image from 'next/image';
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/app/lib/auth";
 
 type Book = {
   id: string,
@@ -15,8 +13,6 @@ type Book = {
 export const BookList = async() => {
   // 本一覧情報の取得
   const books:Book[] = await getBooks();
-  const session = await getServerSession(authOptions)
-  console.log(session);
 
   //
   const noImagePath = "/images/no-image1.png";

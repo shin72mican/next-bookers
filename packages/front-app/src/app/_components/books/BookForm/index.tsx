@@ -2,12 +2,20 @@
 import { storeBook } from "@/services/books/storeBook";
 import { useState } from "react";
 
-export const BookForm = () => {
+type Props = {
+  id: string|undefined,
+}
+
+export const BookForm = (props: Props) => {
   let [titleVal, setTitleVal] = useState<string>("");
   let [opinionVal, setOpinionVal] = useState<string>("");
 
   const createBook = () => {
-    storeBook(titleVal, opinionVal);
+    const id = props.id;
+    if(!id) {
+      return
+    }
+    storeBook(id, titleVal, opinionVal);
   }
   
   return (

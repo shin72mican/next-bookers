@@ -8,6 +8,7 @@ export type User = {
 
 export type Book = {
   id: string;
+  userId: string;
   title: string;
   body: string;
   createAt: string;
