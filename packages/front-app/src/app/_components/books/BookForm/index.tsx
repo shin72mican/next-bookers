@@ -7,8 +7,8 @@ type Props = {
 }
 
 export const BookForm = (props: Props) => {
-  let [titleVal, setTitleVal] = useState<string>("");
-  let [opinionVal, setOpinionVal] = useState<string>("");
+  const [titleVal, setTitleVal] = useState<string>("");
+  const [opinionVal, setOpinionVal] = useState<string>("");
 
   const createBook = () => {
     const id = props.id;

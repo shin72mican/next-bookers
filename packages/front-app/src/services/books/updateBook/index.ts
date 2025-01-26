@@ -1,8 +1,12 @@
 import { path } from "../";
 import type { Book } from "../../type";
 
-export const updateBook = async(bookId:string, title: string, body:string) => {
+export const updateBook = async(userId:string, bookId:string, title: string, body:string) => {
+  if(!userId) {
+    return;
+  }
   const book: Omit<Book, 'id' | 'createAt'> = {
+    userId: userId,
     title: title,
     body: body,
   };
