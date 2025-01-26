@@ -21,6 +21,7 @@ export const BookEditForm = (props: Book) => {
     }
     updateBook(props.userId, props.bookId, titleVal, opinionVal);
     router.push('/books');
+    router.refresh();
   }
 
   return (
