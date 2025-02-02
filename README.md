@@ -7,7 +7,7 @@
 - next 14.2.13
 
 # デプロイアプリ
-https://next-bookers-front-gzhzpmzya-72-micans-projects.vercel.app/auth/user/signin  
+https://next-bookers-front-app.vercel.app/auth/user/signin
 email: test@example.com  
 password: test_pass1  
 
