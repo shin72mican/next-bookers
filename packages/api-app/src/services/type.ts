@@ -3,7 +3,7 @@ export type User = {
   name: string;
   email: string;
   password: string;
-  createAt: string;
+  createAt: Date;
   books: Book[];
 }
 

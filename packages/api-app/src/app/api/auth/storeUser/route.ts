@@ -30,7 +30,7 @@ export const POST = async(req: NextRequest) => {
     console.log("save user info end");
 
     console.log(" get user info start");
-    const user: User|null  = await prisma.user.findFirst({
+    const user  = await prisma.user.findFirst({
       where: {
         email: reqData.email
       }
@@ -41,7 +41,7 @@ export const POST = async(req: NextRequest) => {
       { user: user ?? null }
     );
   } catch (err) {
-    console.log("save-failed");
+    console.log(err);
     return Response.json(
       { message: "Internal Server Error" }, 
       { status: 500 }
