@@ -35,6 +35,7 @@ export const PATCH = async(
       return Response.json({ status: 201 });
     } catch (err) {
       console.log('update failed');
+      console.log(err);
       return Response.json({ message: "Internal Server Error" }, { status: 500 });
     }
 }

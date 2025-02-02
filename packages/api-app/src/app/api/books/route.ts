@@ -29,6 +29,7 @@ export const POST = async(req: NextRequest) => {
     });
   } catch (err) {
     console.log("save-failed");
+    console.log(err);
     return Response.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }
