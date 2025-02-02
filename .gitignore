@@ -5,3 +5,4 @@
 *.psd
 tsconfig.tsbuildinfo
 node_modules
+.turbo
