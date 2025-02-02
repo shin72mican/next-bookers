@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
 import type { User } from "../type";
 
-export const host = process.env.NEXT_PUBLIC_API_HOST;
+// export const host = process.env.NEXT_PUBLIC_API_HOST;
+export const host = process.env.NEXT_PUBLIC_VERCEL_URL;
 
 export const path = (path?: string) => `${host}${path}`;
 
