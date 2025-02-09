@@ -17,17 +17,13 @@ class FetchError extends Error {
 };
 
 /** user 情報 */
-export const userHandleSucceed = async(res: Response)  => {
+export const userHandleSucceed = async(res: Response) => {
   const data = await res.json();
   if (!res.ok) {
     throw new FetchError(res.statusText, res.status);
   }
   // 配列に変換して返却
-  // const user:User = data.user;
-  const user = {
-    user: data.user,
-    // error: data.error
-  }
+  const user:User = data.user;
   return user ?? null;
 }
 

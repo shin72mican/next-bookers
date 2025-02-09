@@ -2,9 +2,9 @@ import NextAuth, { NextAuthOptions, User } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { getUser } from "@/services/auth/user";
 
-function isUser(arg: any): arg is User {
-  return arg.User !== undefined;
-}
+// function isUser(arg: any): arg is User {
+//   return arg.User !== undefined;
+// }
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -17,8 +17,8 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials):Promise<User|null> {
         const email:string = credentials?.email ?? "";
         const password:string = credentials?.password ?? "";
-        const data = await getUser(email, password);
-        return data.user ?? null;
+        const user = await getUser(email, password);
+        return user ?? null;
       }
     })
   ],
@@ -51,17 +51,17 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
-    async signIn(user) {
-      // if (isUser(user)) {
-      //   if(user.error) {
+    // async signIn() {
+    //   // if (isUser(user)) {
+    //   //   if(user.error) {
           
-      //   }
-      //   // エラーメッセージをクエリパラメーターとしてサインインページにリダイレクト
-      //   return `/auth/user/signin?error=Invalid%20credentials`;
+    //   //   }
+    //   //   // エラーメッセージをクエリパラメーターとしてサインインページにリダイレクト
+    //   //   return `/auth/user/signin?error=Invalid%20credentials`;
 
-      // }
-      return true;
-    }
+    //   // }
+    //   return true;
+    // }
   },
    secret:process.env.NEXTAUTH_SECRET,
   // secret:process.env.SECRET,
