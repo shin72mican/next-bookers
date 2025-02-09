@@ -4,7 +4,6 @@ export type User = {
   email: string;
   password: string;
   createAt: Date;
-  books: Book[];
 }
 
 export type Book = {

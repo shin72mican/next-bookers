@@ -1,8 +1,9 @@
-'use client'
+'use client';
+import Link from 'next/link';
 import { useFormState } from 'react-dom';
 import { SigninFormSchema } from "@/app/lib/definitions";
 import type { SignInFormState } from "@/app/lib/type";
-import { signIn } from "next-auth/react"
+import { signIn } from "next-auth/react";
 
 const login = async(state: SignInFormState, formData: FormData): Promise<SignInFormState | undefined> => {
   const email: (string) = formData.get('email')?.toString() || '';
@@ -20,7 +21,8 @@ const login = async(state: SignInFormState, formData: FormData): Promise<SignInF
     }
   }
 
-  signIn("credentials", { email: email, password: password, callbackUrl: '/' });
+  const result = signIn("credentials", { email: email, password: password, callbackUrl: '/' });
+  console.log(result);
 }
 
 const Page = () => {
@@ -40,6 +42,7 @@ const Page = () => {
           <label htmlFor="email">Email</label>
         </div>
         <div>
+          { !(typeof state?.errors === 'string') && state?.errors?.email && <p style={{ whiteSpace: 'pre-line' }}>{state.errors.email}</p> }
           <input
             name='email'
             type="text"
@@ -51,6 +54,7 @@ const Page = () => {
           <label htmlFor="password">Password</label>
         </div>
         <div>
+          { !(typeof state?.errors === 'string') && state?.errors?.password && <p style={{ whiteSpace: 'pre-line' }}>{state.errors.password}</p> }
           <input
             name="password"
             type="text"
@@ -62,6 +66,8 @@ const Page = () => {
           <button>login</button>
         </div>
       </form>
+
+      <Link href={"/auth/user/signup"} className={""}>新規登録</Link>
     </>
   )
 }

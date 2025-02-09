@@ -3,7 +3,7 @@ import { path, userHandleSucceed, handleFailed, hashPassword } from "..";
 import type { User } from "../../type";
 
 // ログインデータ取得
-export const getUser = async(email:string, password:string): Promise<User|null> => {
+export const getUser = async(email:string, password:string) => {
   const user: Omit<User, 'id'|'name'|'createAt'> = {
     email: email,
     password: password,
@@ -22,7 +22,7 @@ export const getUser = async(email:string, password:string): Promise<User|null> 
 }
 
 // 新規登録処理
-export const storeUser = async(name:(string), email:string, password:string): Promise<User|null> => {
+export const storeUser = async(name:(string), email:string, password:string) => {
   // パスワードのハッシュ化
   const hashPass:string = await hashPassword(password);
   const user: Omit<User, 'id'|'createAt'> = {
@@ -43,7 +43,7 @@ export const storeUser = async(name:(string), email:string, password:string): Pr
 }
 
 // セッションユーザーデータ取得
-export const getSessionUser = async(email:string): Promise<User|null> => {
+export const getSessionUser = async(email:string) => {
   const user: Omit<User, 'id'|'name'|'password'|'createAt'> = {
     email: email,
   };
