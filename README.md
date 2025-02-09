@@ -7,15 +7,10 @@
 - next 14.2.13
 
 # デプロイアプリ
-https://next-bookers-front-app.vercel.app/auth/user/signin
+https://next-bookers-front-app.vercel.app/auth/user/signin  
 email: test@example.com  
 password: test_pass1  
 
-# 本投稿
-/video/book_post.mp4
-
-# ログイン
-/video/login.mp4
-
-# 新規登録
-/video/signin.mp4
+# 課題
+- nextauthでログイン失敗時、サーバーサイド側でエラーが返せない
+- ログイン時のリダイレクト先の制御がうまくできていない
