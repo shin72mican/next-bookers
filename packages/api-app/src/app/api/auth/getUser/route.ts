@@ -19,7 +19,8 @@ export const POST = async(req: NextRequest) => {
       });
     } else {
       return Response.json({
-        user: user,
+        // user: user,
+        user: null,
       });
     }
   }

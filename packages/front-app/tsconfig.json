@@ -26,14 +26,19 @@
         "./src/*"
       ]
     },
-    "target": "ES2017"
+    "target": "ES2017",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./app/types"
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/(site)/auth/signin.tsx"
+    "src/app/(site)/auth/signin.tsx",
+    "app/types/next-auth.d.ts" 
   ],
   "exclude": [
     "node_modules"

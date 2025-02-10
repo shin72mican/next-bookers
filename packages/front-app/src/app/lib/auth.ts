@@ -1,15 +1,10 @@
-import NextAuth, { NextAuthOptions } from 'next-auth'
+import NextAuth, { NextAuthOptions, User } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { getUser, getSessionUser } from "@/services/auth/user";
-import { DefaultSession } from "next-auth"
+import { getUser } from "@/services/auth/user";
 
-declare module "next-auth" {
-  interface Session extends DefaultSession {
-    user: {
-      id: string;
-    } & DefaultSession["user"];
-  }
- }
+// function isUser(arg: any): arg is User {
+//   return arg.User !== undefined;
+// }
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -19,16 +14,10 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials) {
+      async authorize(credentials):Promise<User|null> {
         const email:string = credentials?.email ?? "";
         const password:string = credentials?.password ?? "";
-
-        // 不正入力の場合null返す
-        if (!email && !password) {
-          return null;
-        }
         const user = await getUser(email, password);
-  
         return user ?? null;
       }
     })
@@ -49,18 +38,10 @@ export const authOptions: NextAuthOptions = {
       return baseUrl
     },
     async jwt({ token, user }) {
-      const dbUser = await getSessionUser(token.email ?? "");
-      if(!dbUser) {
-        if (user) {
-          token.id = user?.id;
-        }
-        return token;
+      if (user) {
+        token.id = user?.id;
       }
-      return {
-        id: dbUser.id,
-        name: dbUser.name,
-        email: dbUser.email,
-      }
+      return token;
     },
     async session({ session, token }) {
       if (session.user) {
@@ -70,6 +51,17 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    // async signIn() {
+    //   // if (isUser(user)) {
+    //   //   if(user.error) {
+          
+    //   //   }
+    //   //   // エラーメッセージをクエリパラメーターとしてサインインページにリダイレクト
+    //   //   return `/auth/user/signin?error=Invalid%20credentials`;
+
+    //   // }
+    //   return true;
+    // }
   },
    secret:process.env.NEXTAUTH_SECRET,
   // secret:process.env.SECRET,

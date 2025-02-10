@@ -6,6 +6,7 @@ import type { SignUpFormState } from "@/app/lib/type";
 import { signIn } from "next-auth/react"
 import { redirect } from 'next/navigation'
 import { storeUser } from '@/services/auth/user';
+import Link from 'next/link';
 
 const signup = async(state: SignUpFormState, formData: FormData): Promise<SignUpFormState | undefined> => {
   const name: (string) = formData.get('name')?.toString() || '';
@@ -94,6 +95,8 @@ const Page = () => {
           <button>signup</button>
         </div>
       </form>
+
+      <Link href={"/auth/user/signin"} className={""}>ログイン</Link>
     </>
   )
 }
