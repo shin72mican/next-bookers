@@ -7,7 +7,6 @@ export const UserList = async() => {
   const userCollection:UserCollection = await getUserList();
   return (
     <>
-    test
       <table>
         <tbody>
           { userCollection.getUserList != undefined &&
