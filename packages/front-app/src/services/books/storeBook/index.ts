@@ -1,5 +1,5 @@
 import { path } from "../";
-import type { Book } from "../../type";
+import type { Book } from "@/app/lib/type";
 
 export const storeBook = async(id:(string|null), title:string, body:string) => {
   if(!id) {

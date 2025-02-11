@@ -1,15 +1,16 @@
-export type User = {
+export type UserType = {
   id: string;
   name: string;
   email: string;
   password: string;
-  createAt: string;
+  createAt: Date;
+  books: Book[];
 }
 
 export type Book = {
   id: string;
   userId: string;
+  createAt: Date;
   title: string;
   body: string;
-  createAt: string;
-};
+}

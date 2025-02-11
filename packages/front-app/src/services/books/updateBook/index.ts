@@ -1,5 +1,5 @@
 import { path } from "../";
-import type { Book } from "../../type";
+import type { Book } from "@/app/lib/type";
 
 export const updateBook = async(userId:string, bookId:string, title: string, body:string) => {
   if(!userId) {

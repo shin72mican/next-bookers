@@ -1,5 +1,5 @@
 import { handleFailed, booksHandleSucceed, path } from "../";
-import type { Book } from "../../type";
+import type { Book } from "@/app/lib/type";
 
 export type GetBooksResponse = {
   books: Book[];

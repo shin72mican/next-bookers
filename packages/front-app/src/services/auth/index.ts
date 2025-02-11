@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import type { User } from "../type";
+import type { UserType } from "@/app/lib/type";
 
 // export const host = process.env.NEXT_PUBLIC_API_HOST;
 export const host = process.env.NEXT_PUBLIC_VERCEL_URL;
@@ -23,7 +23,7 @@ export const userHandleSucceed = async(res: Response) => {
     throw new FetchError(res.statusText, res.status);
   }
   // 配列に変換して返却
-  const user:User = data.user;
+  const user:UserType = data.user;
   return user ?? null;
 }
 

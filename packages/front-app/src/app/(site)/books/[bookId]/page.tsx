@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getBook } from "@/services/books/getBook";
-import type { Book } from "@/services/type";
+import type { Book } from "@/app/lib/type";
 
 type Props = {
   params: Promise<{ bookId: string }>
