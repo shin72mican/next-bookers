@@ -1,4 +1,4 @@
-import type { Book } from "../type";
+import type { Book } from "@/app/lib/type";
 
 // export const host = process.env.NEXT_PUBLIC_API_HOST;
 export const host = process.env.NEXT_PUBLIC_VERCEL_URL;

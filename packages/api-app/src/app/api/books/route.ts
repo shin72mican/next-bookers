@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server"
-import type { Book } from "@/services/type";
+import type { Book } from "@/lib/type";
 
 // 本一覧データ取得
 export const GET = async() => {
