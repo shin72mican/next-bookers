@@ -9,7 +9,7 @@ export const UserList = async() => {
     <>
       <table>
         <tbody>
-          { userCollection.getUserList != undefined &&
+          {/* { userCollection.getUserList != undefined &&
               userCollection.getUserList.length > 0 &&
               userCollection.getUserList.map((user:User) => (
                 <tr key={user.getId}>
@@ -17,7 +17,8 @@ export const UserList = async() => {
                   <td>{user.getEmail}</td>
                 </tr>
               ))
-          }
+          } */}
+          <tr><td>test</td></tr>
         </tbody>
       </table>
     </>
