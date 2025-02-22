@@ -1,10 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server"
-import type { User } from "@/services/type";
+import type { UserType } from "@/lib/type";
 
 // ユーザー新規登録
 export const POST = async(req: NextRequest) => {
-  const reqData: Omit<User, 'id'|'createAt'|'books'> = await req.json();
+  const reqData: Omit<UserType, 'id'|'createAt'|'books'> = await req.json();
   const existingUser = await prisma.user.findFirst({
     where: {
       email: reqData.email,

@@ -5,7 +5,6 @@ import { authOptions } from "@/app/lib/auth";
 
 export default async function Page() {
   const session = await getServerSession(authOptions)
-  console.log(session);
   return (
     <>
       {/* 本一覧 */}

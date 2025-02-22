@@ -1,7 +1,7 @@
 'use client'
 import { useFormState } from 'react-dom';
 import { SignupFormSchema } from "@/app/lib/definitions";
-import type { User } from "@/services/type";
+import type { UserType } from "@/app/lib/type";
 import type { SignUpFormState } from "@/app/lib/type";
 import { signIn } from "next-auth/react"
 import { redirect } from 'next/navigation'
@@ -27,7 +27,7 @@ const signup = async(state: SignUpFormState, formData: FormData): Promise<SignUp
   }
 
   if (name && email && password) {
-    const user:(User|null) = await storeUser(name, email, password);
+    const user:(UserType|null) = await storeUser(name, email, password);
     if(user) {
       signIn("credentials", { redirect: false, email: email, password: password });
       redirect('/');
