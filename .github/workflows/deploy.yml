@@ -1,0 +1,24 @@
+name: Deploy Bookers
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Deploy API App to Vercel
+        run: |
+          curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_nvOVnRZ3xnHz1TF4t74C4rvGCmQk/l3uC1gPb8Q
+      - name: Wait for API App deployment
+        run: sleep 180
+  
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    needs: deploy-backend
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Deploy API App to Vercel
+        run: |
+          curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_x3MjPleNoYAGGtOiG3r0QJ2zSr22/pR6imlHWE2
+          
