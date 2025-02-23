@@ -2,9 +2,12 @@
 import { getUserList } from '@/services/users/getUserList';
 import { UserCollection } from '@/app/lib/class/userCollection';
 import { User } from '@/app/lib/class/user';
+import { UserType } from '@/app/lib/type';
 
 export const UserList = async() => {
-  const userCollection:UserCollection = await getUserList();
+  const userCollection = new UserCollection();
+  const userList:Omit<UserType, 'book'>[] = await getUserList();
+  userCollection.setUserList = userList;
   return (
     <>
       <table>
