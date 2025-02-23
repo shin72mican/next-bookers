@@ -8,7 +8,7 @@ export const UserList = async() => {
   // const userCollection = new UserCollection();
   // const userList:Omit<UserType, 'book'>[] = await getUserList();
   // userCollection.setUserList = userList;
-  const userList:UserType[] = await getUserList();
+  const userList:Omit<UserType, 'books'>[] = await getUserList();
   return (
     <>
       <table>
