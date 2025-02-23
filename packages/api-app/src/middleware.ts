@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
  
-const allowedOrigins = ['http://localhost:3001']
+// const allowedOrigins = ['http://localhost:3001']
+const allowedOrigins = [process.env.NEXT_PUBLIC_VERCEL_URL]
  
 const corsOptions = {
   // 'Access-Control-Allow-Credentials': 'true',
