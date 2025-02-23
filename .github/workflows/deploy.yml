@@ -15,7 +15,17 @@ jobs:
         run: |
           curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_nvOVnRZ3xnHz1TF4t74C4rvGCmQk/l3uC1gPb8Q
       - name: Wait for API App deployment
-        run: sleep 180
+        run: |
+          for i in {1..30}; do \
+            response=$(curl --write-out '%{http_code}' --silent --output /dev/null https://your-api-app-url.vercel.app/healthcheck); \
+            if [ $response -eq 200 ]; then \
+              echo "API is up!"; \
+              break; \
+            else \
+              echo "Waiting for API to be up..."; \
+              sleep 10; \
+            fi; \
+          done
   
   deploy-frontend:
     runs-on: ubuntu-latest
