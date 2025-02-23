@@ -1,10 +1,14 @@
 // import Link from 'next/link';
-// import { getUserList } from '@/services/users/getUserList';
+import { getUserList } from '@/services/users/getUserList';
 // import { UserCollection } from '@/app/lib/class/userCollection';
 // import { User } from '@/app/lib/class/user';
+import { UserType } from '@/app/lib/type';
 
 export const UserList = async() => {
-  // const userCollection:UserCollection = await getUserList();
+  // const userCollection = new UserCollection();
+  // const userList:Omit<UserType, 'book'>[] = await getUserList();
+  // userCollection.setUserList = userList;
+  const userList:Omit<UserType, 'books'>[] = await getUserList();
   return (
     <>
       <table>
@@ -18,7 +22,15 @@ export const UserList = async() => {
                 </tr>
               ))
           } */}
-          <tr><td>test</td></tr>
+
+          { userList != undefined
+            && userList.length > 0 
+            && userList.map((user) => (
+              <tr key={user.id}>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                </tr>
+            ))}
         </tbody>
       </table>
     </>
