@@ -15,18 +15,13 @@ class FetchError extends Error {
 
 /** user一覧 */
 export const userListHandleSucceed = async (res: Response) => {
-  try {
-    const data = await res.json();
-    // 配列に変換して返却
-    const userList = data.user_list;
-    // if (!res.ok) {
-    //   throw new FetchError(res.statusText, res.status);
-    // }
-    return userList;
-  } catch (error) {
-    console.error('Failed to parse JSON:', error);
-    throw new Error('Failed to parse JSON');
+  const data = await res.json();
+  // 配列に変換して返却
+  const userList = data.user_list;
+  if (!res.ok) {
+    throw new FetchError(res.statusText, res.status);
   }
+  return userList;
 };
 
 /** user 詳細 */
