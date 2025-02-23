@@ -5,5 +5,5 @@ export const GET = async() => {
   const userList:Omit<UserType, 'books'>[] = await prisma.user.findMany();
   return Response.json({
     user_list: userList,
-  })
+  });
 }
